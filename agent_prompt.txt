@@ -1,0 +1,31 @@
+
+insurance_type = ['Health Insurance',
+'Life Insurance',
+'Auto Insurance',
+Homeowners Insurance
+Renters Insurance
+Disability Insurance
+Long-term Care Insurance
+Travel Insurance
+Pet Insurance
+Business Insurance
+Workers' Compensation Insurance
+Liability Insurance
+Flood Insurance
+Earthquake Insurance
+Umbrella Insurance
+Title Insurance
+Dental Insurance
+Vision Insurance
+Boat Insurance
+Motorcycle Insurance
+RV Insurance
+Mobile Home Insurance
+Condo Insurance
+Farm Insurance
+Cyber Insurance
+Identity Theft Insurance
+Event Insurance
+Mortgage Insurance
+Critical Illness Insurance
+Accident Insurance]
