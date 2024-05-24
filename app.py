@@ -42,24 +42,24 @@ if api_key != "":
         st.sidebar.success("API Key saved!")
 
 
-        with open('api_key.txt', 'r') as file:
-            api_key = file.read()
-            api_key = api_key.replace(" ","")
+    with open('api_key.txt', 'r') as file:
+        api_key = file.read()
+        api_key = api_key.replace(" ","")
 
-        open_ai = open_ai_model(API_KEY=api_key)
+    open_ai = open_ai_model(API_KEY=api_key)
 
-        agent = prompt.agent_prompt()
-        policies = prompt.policies_types()
-
-
-        insurace_type = st.selectbox(options=policies, label='Select your Insurance Type')
+    agent = prompt.agent_prompt()
+    policies = prompt.policies_types()
 
 
-        if insurace_type != 'None':
-            # if st.button('Submit'):
-                policy_type = prompt.task_prompt(insurance_type=insurace_type)
-                mitigation_starategies = risk_mitigation_assistant(insurance_type=policy_type, agent_prompt=agent, open_ai_model=open_ai, policy=insurace_type)
-                st.markdown('---')
-                st.subheader('Risk Mitigation Strategies')
-                output = mitigation_starategies[0]['task_output']
-                st.write(output)
+    insurace_type = st.selectbox(options=policies, label='Select your Insurance Type')
+
+
+    if insurace_type != 'None':
+        # if st.button('Submit'):
+            policy_type = prompt.task_prompt(insurance_type=insurace_type)
+            mitigation_starategies = risk_mitigation_assistant(insurance_type=policy_type, agent_prompt=agent, open_ai_model=open_ai, policy=insurace_type)
+            st.markdown('---')
+            st.subheader('Risk Mitigation Strategies')
+            output = mitigation_starategies[0]['task_output']
+            st.write(output)
