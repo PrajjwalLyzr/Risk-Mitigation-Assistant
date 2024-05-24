@@ -56,7 +56,7 @@ if api_key != "":
 
 
         if insurace_type != 'None':
-            if st.button('Submit'):
+            # if st.button('Submit'):
                 policy_type = prompt.task_prompt(insurance_type=insurace_type)
                 mitigation_starategies = risk_mitigation_assistant(insurance_type=policy_type, agent_prompt=agent, open_ai_model=open_ai, policy=insurace_type)
                 st.markdown('---')
