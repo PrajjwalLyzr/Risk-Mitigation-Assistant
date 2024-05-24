@@ -42,13 +42,14 @@ if api_key != "":
         st.sidebar.success("API Key saved!")
 
 
-with open('api_key.txt', 'r') as file:
-    api_key = file.read()
-    api_key = api_key.replace(" ","")
+        with open('api_key.txt', 'r') as file:
+            api_key = file.read()
+            api_key = api_key.replace(" ","")
 
-open_ai = open_ai_model(API_KEY=api_key)
-agent = prompt.agent_prompt()
-policies = prompt.policies_types()
+            open_ai = open_ai_model(API_KEY=api_key)
+
+            agent = prompt.agent_prompt()
+            policies = prompt.policies_types()
 
 
 insurace_type = st.selectbox(options=policies, label='Select your Insurance Type')
