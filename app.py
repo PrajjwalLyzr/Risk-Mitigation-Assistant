@@ -32,7 +32,7 @@ st.title('Risk Mitigation Assistant')
 st.markdown('A tool that uses AI to suggest customized risk mitigation strategies based on insurance types, offering tailored advice to reduce risks and enhance preparedness.')
 
 # Setting up the sidebar for input
-st.sidebar.title("Instagram Script Generator")
+st.sidebar.title("Risk Mitigation Assistant")
 api_key = st.sidebar.text_input("Enter your OpenAI API key", type='password')
 submit_api_key = st.sidebar.button("Submit API Key")
 
