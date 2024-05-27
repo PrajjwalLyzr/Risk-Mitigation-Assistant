@@ -58,17 +58,17 @@ policy_doc = st.file_uploader(label='Upload your policy', type=['pdf','docx'])
 
 
 
-
-if policy_doc is not None:
-    utils.save_uploaded_file(directory=data, uploaded_file=policy_doc)
-    current_directory = os.getcwd()
-    files_in_directory = os.listdir(current_directory)
-    if 'api_key.txt' in files_in_directory:
-        with open('api_key.txt', 'r') as file:
-            api_key = file.read()
-            api_key = api_key.replace(" ","")
-            os.environ['OPENAI_API_KEY'] = api_key
-        
+if api_key != "":
+    if policy_doc is not None:
+        utils.save_uploaded_file(directory=data, uploaded_file=policy_doc)
+        # current_directory = os.getcwd()
+        # files_in_directory = os.listdir(current_directory)
+        # if 'api_key.txt' in files_in_directory:
+        #     with open('api_key.txt', 'r') as file:
+        #         api_key = file.read()
+        #         api_key = api_key.replace(" ","")
+        os.environ['OPENAI_API_KEY'] = api_key
+            
         if (user_name and insurance_type) != "":
             if st.button('Generate'):
                 file = utils.get_files_in_directory(directory=data)
@@ -89,8 +89,7 @@ if policy_doc is not None:
             st.warning('Please Provide the necessary deatils such as Name and Insurance Type')
 
     else:
-        st.warning('Please Submit your OpenAI API Key')
-
+        utils.remove_existing_files(directory=data)
+        st.warning('Upload your policy document with necessary details')
 else:
-    utils.remove_existing_files(directory=data)
-    st.warning('Upload your policy document with necessary details')
+    st.warning('Please Submit your OpenAI API Key')
