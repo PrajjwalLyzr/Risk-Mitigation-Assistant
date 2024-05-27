@@ -7,51 +7,61 @@ def agent_prompt():
     return prompt
 
 
-def task_prompt(insurance_type):
+def task_prompt(insurance_details, Name):
     prompt = f"""
-                1. Risk Analysis: Based on the chosen insurance type: {insurance_type}, analyze potential risks associated with that specific coverage. Highlight common and significant risks that policyholders might face.
 
-                2. Mitigation Strategy Generation: Based on the analyzed risks, generate a list of personalized risk mitigation strategies. These strategies should be practical, actionable, and tailored to the specific risks identified.
-                
-                3. Preparedness tips: Recommendations for being prepared in case risks materialize.
+                Based on the following insurance policy details: '{insurance_details}', generate a list of personalized risk mitigation strategies:
+
+                1. Risk Analysis:
+                    - Based on insurance policy details: '{insurance_details}', analyze potential risks associated with that specific coverage. Highlight common and significant risks that policyholders might face.
+
+                2. Mitigation Strategy Generation:
+                    - Generate personalized 5 risk mitigation strategies on this policy deails: '{insurance_details}'. These strategies should be practical, actionable, and tailored to the specific risks identified.
+
+                Provide a clear and concise list of actionable steps for {Name} to mitigate risks associated with their [Type of Insurance] policy. Please provide the information in a structured format
+
         """
     
     return prompt
 
+def chat_prompt():
+    prompt = """
+                Extract the following information from the provided insurance policy document:
 
-def policies_types():
-    types = [
-        'None',
-        "Health Insurance",
-        "Life Insurance",
-        "Auto Insurance",
-        "Homeowners Insurance",
-        "Renters Insurance",
-        "Disability Insurance",
-        "Long-term Care Insurance",
-        "Travel Insurance",
-        "Pet Insurance",
-        "Business Insurance",
-        "Workers' Compensation Insurance",
-        "Liability Insurance",
-        "Flood Insurance",
-        "Earthquake Insurance",
-        "Umbrella Insurance",
-        "Title Insurance",
-        "Dental Insurance",
-        "Vision Insurance",
-        "Boat Insurance",
-        "Motorcycle Insurance",
-        "RV Insurance",
-        "Mobile Home Insurance",
-        "Condo Insurance",
-        "Farm Insurance",
-        "Cyber Insurance",
-        "Identity Theft Insurance",
-        "Event Insurance",
-        "Mortgage Insurance",
-        "Critical Illness Insurance",
-        "Accident Insurance"
-        ]
+                1. Policy Holder Information:
+                    - Name
+                    - Address
+                    - Contact Information
+
+                2. Policy Details:
+                    - Policy Number
+                    - Type of Insurance (e.g., homeowners, auto, health)
+                    - Effective Date
+                    - Expiration Date
+
+                3. Coverage Details:
+                    - Coverage Limits
+                    - Covered Events/Perils
+                    - Exclusions
+                    - Additional Coverage/Endorsements
+
+                4. Deductibles:
+                    - Deductible Amounts for Different Types of Claims
+
+                5. Premium Information:
+                    - Annual or Monthly Premium Amount
+                    - Payment Schedule
+
+                6. Claims History:
+                    - Previous Claims Made
+                    - Claim Amounts and Types
+
+                7. Risk Mitigation Measures:
+                    - Existing Safety and Security Measures
+
+                Please provide the extracted information in a structured format.
+
+
+            """
     
-    return types
+    return prompt

@@ -3,22 +3,25 @@ from lyzr_automata import Agent, Task
 from lyzr_automata.tasks.task_literals import InputType, OutputType
 from lyzr_automata.pipelines.linear_sync_pipeline  import  LinearSyncPipeline
 from lyzr_automata import Logger
+from lyzr import ChatBot
 
 
-def open_ai_model(API_KEY):
+def chatagent(file_path, prompt):
+    chatbot = ChatBot.pdf_chat(input_files=file_path)
+    response = chatbot.chat(prompt)
+    return response.response
+
+
+def risk_mitigation_assistant(insurance_details, agent_prompt, API_KEY, policy):
+
     open_ai_model_text = OpenAIModel(
         api_key= API_KEY,
         parameters={
-            "model": "gpt-4-turbo-preview",
+            "model": "gpt-4o",
             "temperature": 0.5,
             "max_tokens": 1500,
         },
     )
-
-    return open_ai_model_text
-
-
-def risk_mitigation_assistant(insurance_type, agent_prompt, open_ai_model, policy):
     
     insurance_advisory = Agent(
         prompt_persona=agent_prompt,
@@ -30,8 +33,8 @@ def risk_mitigation_assistant(insurance_type, agent_prompt, open_ai_model, polic
         agent=insurance_advisory,
         output_type=OutputType.TEXT,
         input_type=InputType.TEXT,
-        model=open_ai_model,
-        instructions=f"{insurance_type} [!Important] Exclude the conclusion and summary",
+        model=open_ai_model_text,
+        instructions=f"{insurance_details} [!Important] Exclude the conclusion and summary",
         log_output=True,
         enhance_prompt=False,
         default_input=policy
