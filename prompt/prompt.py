@@ -12,11 +12,15 @@ def task_prompt(insurance_details, Name):
 
                 Based on the following insurance policy details: '{insurance_details}', generate a list of personalized risk mitigation strategies:
 
-                1. Risk Analysis:
-                    - Based on insurance policy details: '{insurance_details}', analyze potential risks associated with that specific coverage. Highlight common and significant risks that policyholders might face.
+                1. Personal Insformation:
+                    - Based on details: '{insurance_details}', provide the policyholder information such as name.
+                    - Name - [Name of policyholder]
+                
+                2. Risk Analysis:
+                    - Based on insurance policy details: '{insurance_details}', analyze potential risks associated with that specific coverage. Highlight common and significant risks that policyholders might face.[!Important] Don't show the risk analysis on output, just consider this analysis for the input for risk mitigation strategies.
 
-                2. Mitigation Strategy Generation:
-                    - Generate personalized 5 risk mitigation strategies on this policy deails: '{insurance_details}'. These strategies should be practical, actionable, and tailored to the specific risks identified.
+                3. Mitigation Strategy Generation:
+                    - Generate personalized 5 risk mitigation strategies on this policy deails: '{insurance_details}' based on the risk analysis. These strategies should be practical, actionable, and tailored to the specific risks identified.
 
                 Provide a clear and concise list of actionable steps for {Name} to mitigate risks associated with their [Type of Insurance] policy. Please provide the information in a structured format
 
@@ -29,7 +33,7 @@ def chat_prompt():
                 Extract the following information from the provided insurance policy document:
 
                 1. Policy Holder Information:
-                    - Name
+                    - Name/PolicyHolder
                     - Address
                     - Contact Information
 
